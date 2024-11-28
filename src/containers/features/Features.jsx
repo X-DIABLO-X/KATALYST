@@ -4,20 +4,20 @@ import './features.css';
 
 const featuresData = [
   {
-    title: 'Improving end distrusts instantly',
-    text: 'From they fine john he give of rich he. They age and draw mrs like. Improving end distrusts may instantly was household applauded.',
+    title: 'Enhances Creativity',
+    text: 'Catalyst empowers individuals by transforming raw ideas into extraordinary, actionable solutions. It combines human creativity with advanced AI logic to amplify your original thoughts.',
   },
   {
-    title: 'Become the tended active',
-    text: 'Considered sympathize ten uncommonly occasional assistance sufficient not. Letter of on become he tended active enable to.',
+    title: 'Collaborative Innovation',
+    text: 'It acts as a brainstorming partner, weaving together diverse perspectives and insights to create groundbreaking concepts that inspire real-world impact.',
   },
   {
-    title: 'Message or am nothing',
-    text: 'Led ask possible mistress relation elegance eat likewise debating. By message or am nothing amongst chiefly address.',
+    title: 'Refines and Evolves Ideas',
+    text: 'Catalyst doesn’t just generate ideas; it refines them through analysis, innovation, and integration, ensuring each concept reaches its full potential.',
   },
   {
-    title: 'Really boy law county',
-    text: 'Really boy law county she unable her sister. Feet you off its like like six. Among sex are leave law built now. In built table in an rapid blush..',
+    title: 'Shared Idea Repository',
+    text: 'Multiple users can share their ideas, which the AI securely stores. This shared repository is then leveraged to refine and evolve future concepts by integrating collective insights.',
   },
 ];
 
@@ -25,7 +25,7 @@ const Features = () => (
   <div className="gpt3__features section__padding" id="features">
     <div className="gpt3__features-heading">
       <h1 className="gradient__text">The Future is Now and You Just Need to Realize It. Step into Future Today. & Make it Happen.</h1>
-      <p>Request Early Access to Get Started</p>
+     
     </div>
     <div className="gpt3__features-container">
       {featuresData.map((item, index) => (
