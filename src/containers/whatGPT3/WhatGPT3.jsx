@@ -5,16 +5,16 @@ import './whatGPT3.css';
 const WhatGPT3 = () => (
   <div className="gpt3__whatgpt3 section__margin" id="wgpt3">
     <div className="gpt3__whatgpt3-feature">
-      <Feature title="What is GPT-3" text="We so opinion friends me message as delight. Whole front do of plate heard oh ought. His defective nor convinced residence own. Connection has put impossible own apartments boisterous. At jointure ladyship an insisted so humanity he. Friendly bachelor entrance to on by." />
+      <Feature title="What is Catalyst" text="Catalyst is an AI-powered creativity amplifier that transforms raw ideas into groundbreaking, actionable concepts. By merging your thoughts with global insights, it fosters originality, collaboration, and innovation - unlocking the potential to change the game" />
     </div>
     <div className="gpt3__whatgpt3-heading">
-      <h1 className="gradient__text">The possibilities are beyond your imagination</h1>
-      <p>Explore the Library</p>
+      <h1 className="gradient__text">Your Partner in navigating life </h1>
+      
     </div>
     <div className="gpt3__whatgpt3-container">
-      <Feature title="Chatbots" text="We so opinion friends me message as delight. Whole front do of plate heard oh ought." />
-      <Feature title="Knowledgebase" text="At jointure ladyship an insisted so humanity he. Friendly bachelor entrance to on by. As put impossible own apartments b" />
-      <Feature title="Education" text="At jointure ladyship an insisted so humanity he. Friendly bachelor entrance to on by. As put impossible own apartments b" />
+      <Feature title="User-friendly" text="ntuitive design ensures effortless navigation for users of all skill levels" />
+      <Feature title="Seamless integration" text="asily integrates with your existing tools and workflows for a smooth experience" />
+      <Feature title="Secure & safe" text="obust security measures safeguard your data and intellectual property at every step" />
     </div>
   </div>
 );
