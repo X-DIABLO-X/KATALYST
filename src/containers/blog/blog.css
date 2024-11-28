@@ -60,7 +60,7 @@
     }
 
     .gpt3__blog-container_groupA .gpt3__blog-container_article  {
-       width: 100%;
+        width: 100%;
     }
 
     .gpt3__blog-heading h1 {
@@ -96,8 +96,6 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
     box-sizing: border-box;
   }
   
@@ -141,7 +139,7 @@
       animation: spin 2.5s linear infinite;
   }
   .card:hover{
-    transform: scale(1.1);
+    transform: scale(1.03);
   }
   
   .card::after {
