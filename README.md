@@ -1,1 +1,1 @@
-welcome to Catalyst
+welcome
