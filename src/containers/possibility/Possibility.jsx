@@ -16,4 +16,4 @@ const Possibility = () => (
   </div>
 );
 
-export default Possibility;
+export default Possibility; 
