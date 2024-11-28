@@ -3,15 +3,44 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    gap: 1.5rem; /* Adds consistent spacing between logos */
+    padding: 1rem; /* Ensures proper padding for the section */
 }
 
 .gpt3__brand div {
-    flex: 1;
+    flex: 0 1 150px; /* Adjust the flex behavior for responsiveness */
     max-width: 150px;
     min-width: 120px;
-    margin: 1rem;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center; /* Aligns content centrally */
+}
+
+.gpt3__brand img {
+    max-height: 50px; /* Consistent logo height */
+    max-width: 100%; /* Ensures images don't exceed container width */
+    object-fit: contain; /* Maintains aspect ratio */
+}
+
+/* Specific styling for the Meta AI logo to reduce its size */
+.gpt3__brand div.meta {
+    max-width: 130px;
+}
+
+
+.gpt3__brand div.meta img {
+    max-height: 45px; /* Adjust Meta AI logo height */
+}
+
+.gpt3__brand div.groq {
+    max-width: 100px; /* Reduced width */
+    min-width: 80px;
+}
+
+.gpt3__brand div.groq img {
+    max-height: 30px; /* Reduced height */
+    max-width: 100%; /* Ensure it fits within its container */
+    object-fit: contain; /* Maintain aspect ratio */
 }

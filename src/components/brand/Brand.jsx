@@ -1,5 +1,5 @@
 import React from 'react';
-import { google, slack, atlassian, dropbox, shopify } from './imports';
+import { google, groq, scaler, metaAI, shopify } from './imports';
 import './brand.css';
 
 const Brand = () => (
@@ -7,14 +7,14 @@ const Brand = () => (
     <div>
       <img src={google} />
     </div>
-    <div>
-      <img src={slack} />
+    <div className="groq" >
+      <img src={groq} />
     </div>
     <div>
-      <img src={atlassian} />
+      <img src={scaler} />
     </div>
-    <div>
-      <img src={dropbox} />
+    <div className="meta">
+      <img src={metaAI} />
     </div>
     <div>
       <img src={shopify} />

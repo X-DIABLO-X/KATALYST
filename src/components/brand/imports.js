@@ -1,13 +1,13 @@
 import google from '../../assets/google.png';
-import slack from '../../assets/slack.png';
-import atlassian from '../../assets/atlassian.png';
-import dropbox from '../../assets/dropbox.png';
+import groq from '../../assets/groq.png';
+import scaler from '../../assets/scaler.png';
+import metaAI from '../../assets/metaAI.png';
 import shopify from '../../assets/shopify.png';
 
 export {
   google,
-  slack,
-  atlassian,
-  dropbox,
+  groq,
+  scaler,
+  metaAI,
   shopify,
 };
