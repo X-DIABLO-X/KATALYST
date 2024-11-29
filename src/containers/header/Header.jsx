@@ -6,18 +6,16 @@ import './header.css';
 const Header = () => (
   <div className="gpt3__header section__padding" id="home">
     <div className="gpt3__header-content">
-      <h1 className="gradient__text">Let's Ignite Your Imagination with Catalyst</h1>
-      <p>Transform your raw ideas into personalized, actionable strategies tailored to your goals. Say goodbye to generic solutions and embrace a future where every vision is amplified, every challenge conquered, and every possibility reimagined</p>
+      <h1 className="gradient__text">Let's Ignite Your Imagination with Catalyst<br></br></h1>
+      <p>Transform your raw ideas into personalized, actionable strategies tailored to your goals. Say goodbye to generic solutions and embrace a future where every vision is amplified, every challenge conquered, and every possibility reimagined <br></br><br></br></p>
 
       <div className="gpt3__header-content__input">
+        
         {/* <input type="email" placeholder="Your Email Address" /> */}
         <button type="button">Get Started</button>
       </div>
 
-      <div className="gpt3__header-content__people">
-        <img src={people} />
-        <p>1,600 people requested access a visit in last 24 hours</p>
-      </div>
+      
     </div>
 
     <div className="gpt3__header-image">
