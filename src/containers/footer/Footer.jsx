@@ -25,12 +25,12 @@ const Footer = () => (
         <h4>Company</h4>
         <p>Terms & Conditions </p>
         <p>Privacy Policy</p>
-        <p>Contact</p>
       </div>
       <div className="gpt3__footer-links_div">
         <h4>Get in touch</h4>
         <p>Electronic City, Bangalore Karnataka, India 560100</p>
-        <p>7044108465</p>
+        <br></br>
+        <h4>Send us a message</h4>
         <p>catalyst24.forge@gmail.com</p>
       </div>
     </div>
