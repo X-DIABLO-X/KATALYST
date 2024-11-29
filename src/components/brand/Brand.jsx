@@ -1,5 +1,5 @@
 import React from 'react';
-import { google, groq, scaler, metaAI, shopify } from './imports';
+import { google, groq, scaler, metaAI, innovision } from './imports';
 import './brand.css';
 
 const Brand = () => (
@@ -17,7 +17,7 @@ const Brand = () => (
       <img src={metaAI} />
     </div>
     <div>
-      <img src={shopify} />
+      <img src={innovision} />
     </div>
   </div>
 );

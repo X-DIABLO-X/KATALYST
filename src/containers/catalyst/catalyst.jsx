@@ -1,8 +1,8 @@
 import React from 'react';
 import Feature from '../../components/feature/Feature';
-import './whatGPT3.css';
+import './catalyst.css';
 
-const WhatGPT3 = () => (
+const catalyst = () => (
   <div className="gpt3__whatgpt3 section__margin" id="wgpt3">
     <div className="gpt3__whatgpt3-feature">
       <Feature title="What is Catalyst?" text="Catalyst is an AI-powered creativity amplifier that transforms raw ideas into groundbreaking, actionable concepts. By merging your thoughts with global insights, it fosters originality, collaboration, and innovation - unlocking the potential to change the game" />
@@ -19,4 +19,4 @@ const WhatGPT3 = () => (
   </div>
 );
 
-export default WhatGPT3;
+export default catalyst;
