@@ -11,7 +11,10 @@ const Blog = () => (
   <>
   <div className="gpt3__blog section__padding" id="blog">
     <div className="gpt3__blog-heading">
-      <h1 className="gradient__text">Our Past Testimonials!</h1>
+    <h1 className="gradient__text" style={{ textAlign: "center" }}>
+    Our Past Testimonials
+    </h1>
+
     </div>
     <div className="gpt3__blog-container">
       {/* <img id="reviews" src={ReviewImage} style={{width: "100%"}} /> */}
