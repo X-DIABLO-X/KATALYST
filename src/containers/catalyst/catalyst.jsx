@@ -5,7 +5,7 @@ import './catalyst.css';
 const catalyst = () => (
   <div className="gpt3__whatgpt3 section__margin" id="wgpt3">
     <div className="gpt3__whatgpt3-feature">
-      <Feature title="What is Catalyst" text="Catalyst is an AI-powered creativity amplifier that transforms raw ideas into groundbreaking, actionable concepts. By merging your thoughts with global insights, it fosters originality, collaboration, and innovation - unlocking the potential to change the game" />
+      <Feature title="What is Catalyst?" text="Catalyst is an AI-powered creativity amplifier that transforms raw ideas into groundbreaking, actionable concepts. By merging your thoughts with global insights, it fosters originality, collaboration, and innovation - unlocking the potential to change the game" />
     </div>
     <div className="gpt3__whatgpt3-heading">
       <h1 className="gradient__text">Your Partner in navigating life </h1>

@@ -11,7 +11,7 @@ const Blog = () => (
   <>
   <div className="gpt3__blog section__padding" id="blog">
     <div className="gpt3__blog-heading">
-      <h1 className="gradient__text" style={{textAlign: 'center'}}>Our Past Testimonials!</h1>
+      <h1 className="gradient__text">Our Past Testimonials!</h1>
     </div>
     <div className="gpt3__blog-container">
       {/* <img id="reviews" src={ReviewImage} style={{width: "100%"}} /> */}
@@ -28,9 +28,9 @@ const Blog = () => (
       <div className="testimonial-content">
         <h3>Aryen Mukundam</h3>
         <p>
-          "Using Catalyst has been a game-changer for me. It's a seamless platform
+          "Using Catalyst has been a game-changer for me.<br></br>It's a seamless platform
           that helped me break creative barriers and turn my ideas into
-          practical solutions. Highly recommend!"
+          practical solutions.<br></br>Highly recommend!"
         </p>
       </div>
     </div>
@@ -43,7 +43,7 @@ const Blog = () => (
       <div className="testimonial-content">
         <h3>Vimal Kumar Yadav</h3>
         <p>
-        "Catalyst has taken my creativity to the next level! The AI-driven features helped me refine my ideas and collaborate more effectively with my team. A must-try!"
+        "Catalyst has taken my creativity to the next level!<br></br>The AI-driven features helped me refine my ideas and collaborate more effectively with my team.<br></br>A must-try!"
         </p>
       </div>
     </div>
@@ -53,9 +53,9 @@ const Blog = () => (
         <img src={PathakImage} alt="Vimal Kumar Yadav" />
       </div>
       <div className="testimonial-content">
-        <h3>Vimal Kumar Yadav</h3>
+        <h3>Utkarsh Pathak</h3>
         <p>
-        "Catalyst has taken my creativity to the next level! The AI-driven features helped me refine my ideas and collaborate more effectively with my team. A must-try!"
+        "Catalyst is the perfect tool for boosting innovation.<br></br>The AI enhancements and smooth integration made the creative process faster and more efficient.<br></br>Truly impressive!"
         </p>
       </div>
     </div>
