@@ -40,7 +40,31 @@
 }
 
 .gpt3__brand div.groq img {
-    max-height: 30px; /* Reduced height */
+    max-height: 25px; /* Reduced height */
+    max-width: 100%; /* Ensure it fits within its container */
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+
+.gpt3__brand div.google {
+    max-width: 100px; /* Reduced width */
+    min-width: 80px;
+}
+
+.gpt3__brand div.google img {
+    max-height: 72px; /* Reduced height */
+    max-width: 100%; /* Ensure it fits within its container */
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+
+.gpt3__brand div.innovision {
+    max-width: 100px; /* Reduced width */
+    min-width: 80px;
+}
+
+.gpt3__brand div.innovision img {
+    max-height: 65px; /* Reduced height */
     max-width: 100%; /* Ensure it fits within its container */
     object-fit: contain; /* Maintain aspect ratio */
 }

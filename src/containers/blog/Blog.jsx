@@ -4,7 +4,7 @@ import Article from '../../components/article/Article';
 import VimalImage from './vimal.jpeg';
 import AryenImage from './Aryen.jpg';
 import PathakImage from './Pathak.jpeg';  
-import { blog01, blog02, blog03, blog04, blog05 } from './imports';
+// import { blog01, blog02, blog03, blog04, blog05 } from './imports';
 import './blog.css';
 
 const Blog = () => (
@@ -50,7 +50,7 @@ const Blog = () => (
     <div className="card">
       <div className="testimonial-image">
         {/* Image will be replaced with your actual image */}
-        <img src={VimalImage} alt="Vimal Kumar Yadav" />
+        <img src={PathakImage} alt="Vimal Kumar Yadav" />
       </div>
       <div className="testimonial-content">
         <h3>Vimal Kumar Yadav</h3>
