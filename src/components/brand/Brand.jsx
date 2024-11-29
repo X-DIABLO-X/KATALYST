@@ -4,7 +4,7 @@ import './brand.css';
 
 const Brand = () => (
   <div className="gpt3__brand section__padding">
-    <div>
+    <div className="google">
       <img src={google} />
     </div>
     <div className="groq" >
@@ -16,7 +16,7 @@ const Brand = () => (
     <div className="meta">
       <img src={metaAI} />
     </div>
-    <div>
+    <div className="innovision">
       <img src={innovision} />
     </div>
   </div>

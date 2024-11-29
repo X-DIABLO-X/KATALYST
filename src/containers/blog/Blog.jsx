@@ -4,7 +4,7 @@ import Article from '../../components/article/Article';
 import VimalImage from './vimal.jpeg';
 import AryenImage from './Aryen.jpg';
 import PathakImage from './Pathak.jpeg';  
-import { blog01, blog02, blog03, blog04, blog05 } from './imports';
+// import { blog01, blog02, blog03, blog04, blog05 } from './imports';
 import './blog.css';
 
 const Blog = () => (
