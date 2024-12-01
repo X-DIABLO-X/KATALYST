@@ -30,9 +30,10 @@ const App = () => {
                 <span className="material-symbols-outlined">send</span>
               </button>
             </div>
-            <button className="flex items-center gap-3 text-neutral-200 hover:bg-neutral-600 bg-neutral-700 px-4 py-2 rounded-md mb-4">
-              <span className="material-symbols-outlined">attach_file</span> <span>+ Project</span>
-            </button>
+            <label for="file-input"style={{width: '130px'}} className="flex items-center text-neutral-200 hover:bg-neutral-600 bg-neutral-700 px-4 py-2 rounded-md mb-4">
+  <input type="file" id="file-input" className="hidden" />
+  <span className="material-symbols-outlined">attach_file</span> <span>+ Project</span>
+</label>
             <div className="flex flex-wrap gap-2">
               {["Setup a Coffee Shop!!", "Start a ecommerce business?", "I want to create an AI model from scratch"].map(
                 (question, index) => (

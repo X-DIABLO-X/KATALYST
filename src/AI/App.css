@@ -555,3 +555,8 @@ video {
   text-decoration-line: underline;
 }
 
+#file-input {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
