@@ -1,6 +1,7 @@
 import React from 'react';
 import people from '../../assets/people.png';
 import ai from '../../assets/ai.png';
+import { Link } from 'react-router-dom';
 import './header.css';
 
 const Header = () => (
@@ -12,7 +13,9 @@ const Header = () => (
       <div className="gpt3__header-content__input">
         
         {/* <input type="email" placeholder="Your Email Address" /> */}
-        <button type="button">Get Started</button>
+        <Link to="login" className="gpt3__header-content__input">
+          <button type="button">Get Started</button>
+        </Link>
       </div>
 
       
