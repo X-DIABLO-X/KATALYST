@@ -23,7 +23,7 @@ const Blog = () => (
       <img id="reviews" src={PathakImage} style={{width: "50%"}} /> */}
 
     <div className='rev'>
-    <div className="card">
+    <div className="box">
       <div className="testimonial-image">
         {/* Image will be replaced with your actual image */}
         <img src={AryenImage} alt="Aryen Mukundam" />
@@ -38,7 +38,7 @@ const Blog = () => (
       </div>
     </div>
 
-    <div className="card">
+    <div className="box">
       <div className="testimonial-image">
         {/* Image will be replaced with your actual image */}
         <img src={VimalImage} alt="Vimal Kumar Yadav" />
@@ -50,7 +50,7 @@ const Blog = () => (
         </p>
       </div>
     </div>
-    <div className="card">
+    <div className="box">
       <div className="testimonial-image">
         {/* Image will be replaced with your actual image */}
         <img src={PathakImage} alt="Vimal Kumar Yadav" />
