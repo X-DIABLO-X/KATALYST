@@ -15,7 +15,6 @@ const Header = () => (
         <button type="button">Get Started</button>
       </div>
 
-      
     </div>
 
     <div className="gpt3__header-image">
