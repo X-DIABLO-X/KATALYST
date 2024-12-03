@@ -11,48 +11,24 @@ import {
 } from "./firebase/firebase";
 
 export default function AuthPage() {
-  const [currentView, setCurrentView] = useState("login"); // 'login', 'register', or 'forgotPassword'
+  const [currentView, setCurrentView] = useState('login') // 'login', 'register', or 'forgotPassword'
 
-  const handleSwitchToRegister = () => setCurrentView("register");
-  const handleSwitchToLogin = () => setCurrentView("login");
-  const handleForgotPassword = () => setCurrentView("forgotPassword");
+  const handleSwitchToRegister = () => setCurrentView('register')
+  const handleSwitchToLogin = () => setCurrentView('login')
+  const handleForgotPassword = () => setCurrentView('forgotPassword')
 
-  const navigate = useNavigate();
-
-  // Login Form Component
   const LoginForm = () => {
-    const [formData, setFormData] = useState({ email: "", password: "" });
-    const [error, setError] = useState("");
-    const [loginSuccess, setLoginSuccess] = useState(false);
+    const [formData, setFormData] = useState({ email: '', password: '' })
 
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        await signInWithEmailAndPassword(auth, formData.email, formData.password);
-        setLoginSuccess(true);
-        console.log("Logged in successfully");
-        navigate("/catalyst");
-      } catch (err) {
-        setError("Login failed: " + err.message);
-        setLoginSuccess(false);
-      }
-    };
-
-    const googleSignIn = async () => {
-      const provider = new GoogleAuthProvider();
-      try {
-        await signInWithPopup(auth, provider);
-        console.log("Google Sign-In successful");
-        navigate("/catalyst");
-      } catch (err) {
-        setError("Google Sign-In failed: " + err.message);
-      }
-    };
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      console.log('Login attempt with:', formData)
+    }
 
     return (
       <div className="login-card w-[350px]">
@@ -88,11 +64,6 @@ export default function AuthPage() {
           {error && <p className="error-message">{error}</p>}
           <button type="submit" className="btn-primary">Login</button>
         </form>
-        <button type="button" className="google-btn" onClick={googleSignIn}>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
-          <span>Sign in with Google</span>
-        </button>
-        {loginSuccess && <p className="success-message" style={{ color: "green" }}>Login Successful!</p>}
         <div className="login-card-footer">
           <button className="btn-link" onClick={handleForgotPassword}>Forgot password?</button>
           <button className="btn-link" onClick={handleSwitchToRegister}>Don't have an account? Register</button>
@@ -101,11 +72,8 @@ export default function AuthPage() {
     );
   };
 
-  // Register Form Component
   const RegisterForm = () => {
-    const [formData, setFormData] = useState({ name: "", email: "", password: "", confirmPassword: "" });
-    const [error, setError] = useState("");
-    const [registrationSuccess, setRegistrationSuccess] = useState(false);
+    const [formData, setFormData] = useState({ name: '', email: '', password: '', confirmPassword: '' })
 
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -115,21 +83,11 @@ export default function AuthPage() {
     const handleSubmit = async (e) => {
       e.preventDefault();
       if (formData.password !== formData.confirmPassword) {
-        setError("Passwords don't match");
-        return;
+        alert("Passwords don't match")
+        return
       }
-      try {
-        await createUserWithEmailAndPassword(auth, formData.email, formData.password);
-        setRegistrationSuccess(true);
-        console.log("Registered successfully");
-        setTimeout(() => {
-          setCurrentView("login");
-        }, 2000);
-      } catch (err) {
-        setError("Registration failed: " + err.message);
-        setRegistrationSuccess(false);
-      }
-    };
+      console.log('Registration attempt with:', formData)
+    }
 
     return (
       <div className="login-card w-[350px]">
@@ -185,8 +143,6 @@ export default function AuthPage() {
               placeholder="Confirm your password"
             />
           </div>
-          {error && <p className="error-message">{error}</p>}
-          {registrationSuccess && <p className="success-message" style={{ color: "green" }}>Registration Successful! Redirecting to Login...</p>}
           <button type="submit" className="btn-primary">Register</button>
         </form>
         <div className="login-card-footer">
@@ -196,20 +152,13 @@ export default function AuthPage() {
     );
   };
 
-  // Forgot Password Form Component
   const ForgotPasswordForm = () => {
-    const [email, setEmail] = useState("");
-    const [error, setError] = useState("");
+    const [email, setEmail] = useState('')
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        await sendPasswordResetEmail(auth, email);
-        console.log("Password reset email sent");
-      } catch (err) {
-        setError("Failed to send password reset email: " + err.message);
-      }
-    };
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      console.log('Password reset requested for:', { email })
+    }
 
     return (
       <div className="login-card w-[350px]">
