@@ -1,81 +1,186 @@
-.gpt3__possibility {
-  display: flex;
-  flex-direction: row;
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.gpt3__possibility-image {
-  flex: 1;
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  margin-right: 2rem;
+  height: 100vh;
 }
 
-.gpt3__possibility-image img {
+/* Login Card Styles */
+.login-card {
+  width: 400px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-card-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.login-card-header h2 {
+  font-weight: bold;
+  font-size: 28px;
+  color: rgb(238, 133, 4);
+  margin-bottom: 5px;
+}
+
+.login-card-header p {
+  font-size: 16px;
+  color: #666;
+}
+
+.login-card-content {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-group input {
   width: 100%;
-  height: 100%;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.gpt3__possibility-content {
-  flex: 1;
+.form-group input:focus {
+  border-color: #6a11cb;
+  outline: none;
+  box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+}
+
+.btn-primary {
+  width: 100%;
+  height: 45px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(252,176,69,1) 50%, rgba(253,29,29,1) 100%);
+}
+
+.btn-link {
+  font-size: 14px;
+  color: #337ab7;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.btn-link:hover {
+  color: #23527c;
+  text-decoration: underline;
+}
+
+.login-card-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-card-footer button {
+  margin: 0 5px;
+  border: none;
+  background: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-card {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .login-card-header h2 {
+    font-size: 20px;
+  }
+
+  .form-group input {
+    height: 35px;
+    padding: 8px;
+  }
+
+  .btn-primary {
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+/* Google Sign-In Button */
+.google-btn {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  flex-direction: column;
-}
-
-.gpt3__possibility-content h4 {
-  font-family: var(--font-family);
-  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 45px;
   font-size: 16px;
-  line-height: 30px;
-  color: #71E5FF;
+  font-weight: bold;
+  color: #333;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
 }
 
-.gpt3__possibility-content h4:last-child {
-  color: #ff8A71;
+.google-btn:hover {
+  background: #f5f5f5;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
-.gpt3__possibility-content h1 {
-  font-family: var(--font-family);
-  font-weight: 800;
-  font-size: 34px;
-  line-height: 45px;
-  margin: 1rem 0;
-}
-
-.gpt3__possibility-content p {
-  color: var(--color-text);
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 30px;
-
-  margin-bottom: 5rem;
-}
-
-@media screen and (max-width: 950px) {
-  .gpt3__possibility {
-      flex-direction: column;
-  }
-
-  .gpt3__possibility-image {
-      margin: 1rem 0;
-  }
-
-  .gpt3__possibility-image img {
-      width: unset;
-      height: unset;
-  }
-
-  .gpt3__possibility-content {
-      margin-top: 2rem;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .gpt3__possibility-image img {
-      width: 100%;
-      height: 100%;
-  }
+.google-btn img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
