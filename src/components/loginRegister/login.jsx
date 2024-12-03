@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './login.css'
 export default function AuthPage() {
   const [currentView, setCurrentView] = useState('login') // 'login', 'register', or 'forgotPassword'
-
   const handleSwitchToRegister = () => setCurrentView('register')
   const handleSwitchToLogin = () => setCurrentView('login')
   const handleForgotPassword = () => setCurrentView('forgotPassword')
