@@ -1,25 +1,20 @@
 import React from 'react';
-
-import { Footer, Blog, Possibility, Features, Catalyst, Header } from './containers';
-
-import { CTA, Brand, Navbar } from './components';
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import RegisterForm from './components/loginRegister/login'
+import Home from './homepage'
+import AI from './AI/App'
 import './App.css';
 
 const App = () => (
-  <div className="App">
-    <div className="gradient__bg">
-      <Navbar />
-      <Header />
-    </div>
-    <Brand />
-    <Catalyst />
-    <Features />
-    <Possibility />
-    <CTA />
-    <Blog />
-    <Footer />
-  </div>
+  <>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<RegisterForm />} />
+        <Route path="/catalyst" element={<AI />} />
+      </Routes>
+    </BrowserRouter>
+  </>
 );
 
 export default App;
