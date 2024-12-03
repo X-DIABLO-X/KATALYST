@@ -89,7 +89,7 @@ export default function AuthPage() {
           <button type="submit" className="btn-primary">Login</button>
         </form>
         <button type="button" className="google-btn" onClick={googleSignIn}>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" alt="Google logo" />
           <span>Sign in with Google</span>
         </button>
         {loginSuccess && <p className="success-message" style={{ color: "green" }}>Login Successful!</p>}
@@ -247,3 +247,5 @@ export default function AuthPage() {
     </div>
   );
 }
+
+
