@@ -16,7 +16,6 @@ const Header = () => (
         </Link>
       </div>
 
-      
     </div>
 
     <div className="gpt3__header-image">
