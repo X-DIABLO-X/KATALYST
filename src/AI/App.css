@@ -39,8 +39,7 @@ html {
 body {
   line-height: inherit;
   margin: 0;
-  height: 100vh;
-  overflow-y: hidden;
+
 }
 hr {
   border-top-width: 1px;
