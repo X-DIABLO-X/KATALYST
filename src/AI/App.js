@@ -9,7 +9,7 @@ import { FaLightbulb } from "react-icons/fa6";
 import { FaPencil } from "react-icons/fa6";
 import { FaCode } from "react-icons/fa";
 import { FaCompass } from "react-icons/fa";
-import { ImAttachment } from "react-icons/im";
+import { RiVoiceprintFill } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { getUserInfo } from "../components/loginRegister/utils.js";
 const { name, profilePic } = getUserInfo();
@@ -215,7 +215,7 @@ const App = () => {
           </div>
 <div className="action-buttons">
   <label htmlFor="file-upload" className="icon material-symbols-rounded file-upload-button">
-    <ImAttachment />
+    <RiVoiceprintFill />
     <input
       type="file"
       id="file-upload"
