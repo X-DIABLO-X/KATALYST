@@ -1,6 +1,9 @@
 import React from "react";
 import Particle from "./Particle";
 import "./App.css";
+import ChatBot from "./AI/ChatBot";
+import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+
 
 const App = () => {
   return (
