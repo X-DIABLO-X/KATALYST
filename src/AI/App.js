@@ -1,68 +1,190 @@
 import React from "react";
 import Particle from "./Particle";
 import "./App.css";
-import ChatBot from "./AI/ChatBot";
-import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-
 
 const App = () => {
+  const [userMessage, setUserMessage] = useState('');
+  const [chats, setChats] = useState([]);
+  const [isLightMode, setIsLightMode] = useState(localStorage.getItem('themeColor') === 'light_mode');
+  const [isResponseGenerating, setIsResponseGenerating] = useState(false);
+
+  // Scroll to the latest message whenever chats are updated
+  useEffect(() => {
+    const chatListElement = document.querySelector(".chat-list");
+    if (chatListElement) chatListElement.scrollTop = chatListElement.scrollHeight;
+  }, [chats]);
+
+  // Load chats and theme from local storage
+  useEffect(() => {
+    const savedChats = localStorage.getItem('saved-chats');
+    if (savedChats) {
+      setChats(JSON.parse(savedChats));
+    }
+    document.body.classList.toggle('light_mode', isLightMode);
+  }, [isLightMode]);
+
+  // Save chats to local storage whenever they change
+  useEffect(() => {
+    localStorage.setItem('saved-chats', JSON.stringify(chats));
+  }, [chats]);
+
+  // Handle theme toggle
+  const toggleTheme = () => {
+    setIsLightMode(!isLightMode);
+    localStorage.setItem('themeColor', !isLightMode ? 'light_mode' : 'dark_mode');
+  };
+
+  // Function to send a new message
+  const sendMessage = async () => {
+    if (!userMessage.trim() || isResponseGenerating) return;
+  
+    const newChat = { role: 'user', text: userMessage };
+    setChats((prevChats) => [...prevChats, newChat]);
+    setUserMessage('');
+    setIsResponseGenerating(true);
+  
+    const incomingChat = { role: 'bot', text: '', isLoading: true };
+    setChats((prevChats) => [...prevChats, incomingChat]);
+  
+    // Transform the `chats` array into the valid `messages` format
+    const conversationHistory = [
+      { role: 'system', content: 'you are a helpful assistant. Answer as Kat. Ask the user about their idea and transform it into something new using other users suggestions and also check statistical data and compare it with the data given by the user. Also check if it is possible to setup. Ask data like budget, location, capital, resource, etc., and analyze the data. Ask questions one by one and not in one go. Also not only ask questions, also give suggestions in between.' },
+      ...chats.map(chat => ({
+        role: chat.role === 'bot' ? 'assistant' : 'user', // Map 'bot' to 'assistant'
+        content: chat.text,
+      })),
+      { role: 'user', content: userMessage }, // Add the current user message
+    ];
+  
+    try {
+      // Call the Groq API
+      const chatCompletion = await groq.chat.completions.create({
+        messages: conversationHistory,
+        model: 'llama-3.2-90b-vision-preview', // Model used by Groq
+        temperature: 1,
+        max_tokens: 1024,
+        top_p: 1,
+        stream: false,
+        stop: null,
+      });
+  
+      // Get the response from the API
+      const botMessage = chatCompletion.choices[0].message.content;
+  
+      // Update the chat with the bot's response
+      setChats((prevChats) => [
+        ...prevChats.slice(0, prevChats.length - 1), // Remove loading message
+        { role: 'bot', text: botMessage },
+      ]);
+    } catch (error) {
+      setChats((prevChats) => [
+        ...prevChats.slice(0, prevChats.length - 1), // Remove loading message
+        { role: 'bot', text: `Error: ${error.message}`, isError: true },
+      ]);
+    } finally {
+      setIsResponseGenerating(false);
+    }
+  };
+  
+
+  // Handle clearing all chats
+  const clearChats = () => {
+    if (window.confirm('Are you sure you want to delete all the chats?')) {
+      localStorage.removeItem('saved-chats');
+      setChats([]);
+    }
+  };
+
   return (
-    <>
-    <Particle />
-    <div id="webcrumbs">
-      <div className="w-full h-full min-h-[700px] bg-black text-neutral-50 flex flex-col items-center justify-center relative shadow-lg">
-        <header classNamefull="absolute top-0 left-0 w-[80px] h-full bg-neutral-800 flex flex-col items-center py-4">
-          <div className="mt-auto mb-4">
-          </div>
-        </header>
-        <main className="flex flex-col items-center justify-center px-4">
-          <h1 className="text-[28px] font-title mb-8">What can I help you with?</h1>
-          <div className="bg-neutral-800 w-full max-w-[680px] rounded-md p-4 text-neutral-400">
-            {/* <p className="text-sm mb-4 flex justify-between">
-              <span>You have 1 message remaining today.</span>
-              <a href="#"><span className="text-primary-500 hover:underline">Upgrade Plan</span></a>
-            </p> */}
-            <div className="flex items-center bg-neutral-900 rounded-md px-3 py-2 mb-4">
-              <span className="material-symbols-outlined mr-3 text-neutral-500">edit</span>
-              <input
-                type="text"
-                placeholder="Ask katalyst a question..."
-                className="flex-grow bg-transparent text-neutral-50 outline-none"
+    <div className="app">
+      <header className="header">
+        <h1 className="title">Hello, there</h1>
+        <p className="subtitle">How can I help you today?</p>
+        <ul className="suggestion-list">
+          {[{ suggestion: 'Create an ecommerce website', icon: <FaCode /> },
+            { suggestion: 'Start a coffee shop with something new', icon: <FaLightbulb /> },
+            { suggestion: 'Can you help me compile ideas for my project', icon: <FaPencil /> },
+            { suggestion: 'Give me the entire framework of how to build this project', icon: <FaCompass /> },
+          ].map((item, index) => (
+            <li
+              key={index}
+              className="suggestion"
+              onClick={() => {
+                setUserMessage(item.suggestion);
+                document.querySelector(".typing-input").focus(); // Auto-focus input on selection
+              }}
+            >
+              <h4 className="text">{item.suggestion}</h4>
+              <span className="icon">{item.icon}</span>
+            </li>
+          ))}
+        </ul>
+      </header>
+      <div className="chat-list">
+        {chats.map((chat, index) => (
+          <div
+            key={index}
+            className={`message ${chat.role === 'bot' ? 'incoming' : 'outgoing'} ${chat.isLoading ? 'loading' : ''} ${chat.isError ? 'error' : ''}`}
+          >
+            <div className="message-content">
+              <img
+                className="avatar"
+                src={chat.role === 'bot' ? require('./images/cat.jpg') : require('./images/user.jpg')}
+                alt={`${chat.role} avatar`}
               />
-              <button className="w-[30px] h-[30px] flex items-center justify-center bg-primary-500 text-neutral-50 rounded-full ml-3">
-                <span className="material-symbols-outlined">send</span>
-              </button>
-            </div>
-            <label for="file-input"style={{width: '130px'}} className="flex items-center text-neutral-200 hover:bg-neutral-600 bg-neutral-700 px-4 py-2 rounded-md mb-4">
-  <input type="file" id="file-input" className="hidden" />
-  <span className="material-symbols-outlined">attach_file</span> <span>+ Project</span>
-</label>
-            <div className="flex flex-wrap gap-2">
-              {["Setup a Coffee Shop!!", "Start a ecommerce business?", "I want to create an AI model from scratch"].map(
-                (question, index) => (
-                  <button
-                    key={index}
-                    className="px-4 py-2 bg-neutral-700 rounded-full text-neutral-50 hover:bg-neutral-600 text-sm"
-                  >
-                    {question}
-                  </button>
-                )
-              )}
+              <p className="text">{chat.text}</p>
             </div>
           </div>
-        </main>
-        <footer className="absolute bottom-4 text-neutral-500 text-sm flex gap-4">
-          <a href="#" className="hover:underline">Pricing</a>
-          <a href="#" className="hover:underline">Enterprise</a>
-          <a href="#" className="hover:underline">FAQ</a>
-          <a href="#" className="hover:underline">Legal</a>
-          <a href="#" className="hover:underline">Privacy</a>
-          <a href="#" className="hover:underline">katalyst</a>
-        </footer>
+        ))}
+      </div>
+      <div className="typing-area">
+        <form
+          className="typing-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            sendMessage();
+          }}
+        >
+          <div className="input-wrapper">
+            <input
+              type="text"
+              placeholder="Enter a prompt here"
+              className="typing-input"
+              value={userMessage}
+              onChange={(e) => setUserMessage(e.target.value)}
+              required
+            />
+            <button
+              type="submit"
+              id="send-message-button"
+              className="icon material-symbols-rounded"
+            >
+              <IoSend />
+            </button>
+          </div>
+          <div className="action-buttons">
+            <span
+              id="theme-toggle-button"
+              className="icon material-symbols-rounded"
+              onClick={toggleTheme}
+            >
+              {isLightMode ? <MdDarkMode /> : <MdOutlineLightMode />}
+            </span>
+            <span
+              id="delete-chat-button"
+              className="icon material-symbols-rounded"
+              onClick={clearChats}
+            >
+              <RiDeleteBin5Line />
+            </span>
+          </div>
+        </form>
+        <p className="disclaimer-text">
+          Catalyst may display inaccurate info, so double-check its responses.
+        </p>
       </div>
     </div>
-  </>
-  )
-}
+  );
+};
 
 export default App;
