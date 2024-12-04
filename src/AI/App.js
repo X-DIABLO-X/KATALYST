@@ -83,8 +83,8 @@ const App = () => {
       // Call the Groq API
       const chatCompletion = await groq.chat.completions.create({
         messages: conversationHistory,
-        model: 'llama-3.2-90b-vision-preview', // Model used by Groq
-        temperature: 1,
+        model: 'llama3-70b-8192llava-v1.5-7b-4096-preview', // Model used by Groq
+        temperature: 0.5,
         max_tokens: 2048,
         top_p: 1,
         // stream: false,
@@ -196,14 +196,15 @@ const App = () => {
           }}
         >
           <div className="input-wrapper">
-            <input
-              type="text"
-              placeholder="Enter a prompt here"
-              className="typing-input"
-              value={userMessage}
-              onChange={(e) => setUserMessage(e.target.value)}
-              required
-            />
+          <textarea
+            placeholder="Enter a prompt here"
+            className="typing-input"
+            value={userMessage}
+            onChange={(e) => setUserMessage(e.target.value)}
+            required
+            rows={5}
+            cols={30}
+          />
             <button
               type="submit"
               id="send-message-button"
