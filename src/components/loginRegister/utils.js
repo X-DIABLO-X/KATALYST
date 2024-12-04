@@ -6,8 +6,8 @@ export const getUserInfo = () => {
   if (user) {
     return {
       name: user.displayName || "User", // Returns the name if available
-      profilePic: user.photoURL || "../../AI/images/user.jpg", // Default if no profile picture is set
+      profilePic: user.photoURL || require("../../AI/images/user.jpg"), // Default if no profile picture is set
     };
   }
-  return { name: "Guest", profilePic: "../../AI/images/user.jpg" }; // Default for non-logged-in users
+  return { name: "Guest", profilePic: require("../../AI/images/user.jpg") }; // Default for non-logged-in users
 };
