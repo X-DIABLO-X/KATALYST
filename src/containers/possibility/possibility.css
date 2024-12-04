@@ -22,6 +22,7 @@
     justify-content: flex-end;
     align-items: flex-start;
     flex-direction: column;
+    margin-top: 3.5rem;
 }
 
 .gpt3__possibility-content h4 {
