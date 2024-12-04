@@ -10,7 +10,7 @@ import { FaLightbulb } from "react-icons/fa6";
 import { FaPencil } from "react-icons/fa6";
 import { FaCode } from "react-icons/fa";
 import { FaCompass } from "react-icons/fa";
-
+import { ImAttachment } from "react-icons/im";
 const groq = new Groq({ apiKey: "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", dangerouslyAllowBrowser: true });
 
 const App = () => {
@@ -18,6 +18,8 @@ const App = () => {
   const [chats, setChats] = useState([]);
   const [isLightMode, setIsLightMode] = useState(localStorage.getItem('themeColor') === 'light_mode');
   const [isResponseGenerating, setIsResponseGenerating] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
 
 
 
@@ -100,6 +102,17 @@ const App = () => {
   };
   
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const profilePopup = document.querySelector('.profile-popup');
+      if (profilePopup && !profilePopup.contains(event.target)) {
+        setIsProfileOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   // Handle clearing all chats
   const clearChats = () => {
     if (window.confirm('Are you sure you want to delete all the chats?')) {
@@ -111,6 +124,20 @@ const App = () => {
   return (
     <div className="app">
       <header className="header">
+      <div className="profile-icon-container">
+  <img
+    className="profile-icon"
+    src={require('./images/user.jpg')} // Replace with your icon image path
+    alt="Profile Icon"
+    onClick={() => setIsProfileOpen(!isProfileOpen)}
+  />
+  {isProfileOpen && (
+    <div className="profile-popup">
+      <button onClick={() => alert('Logged out!')}>Logout</button>
+    </div>
+  )}
+</div>
+
         <h1 className="title">Hello, there</h1>
         <p className="subtitle">How can I help you today?</p>
         <ul className="suggestion-list">
@@ -176,22 +203,36 @@ const App = () => {
               <IoSend />
             </button>
           </div>
-          <div className="action-buttons">
-            <span
-              id="theme-toggle-button"
-              className="icon material-symbols-rounded"
-              onClick={toggleTheme}
-            >
-              {isLightMode ? <MdDarkMode /> : <MdOutlineLightMode />}
-            </span>
-            <span
-              id="delete-chat-button"
-              className="icon material-symbols-rounded"
-              onClick={clearChats}
-            >
-              <RiDeleteBin5Line />
-            </span>
-          </div>
+<div className="action-buttons">
+  <label htmlFor="file-upload" className="icon material-symbols-rounded file-upload-button">
+    <ImAttachment />
+    <input
+      type="file"
+      id="file-upload"
+      style={{ display: 'none' }}
+      onChange={(e) => {
+        const file = e.target.files[0];
+        if (file) {
+          alert(`File uploaded: ${file.name}`); // Replace with actual file handling logic
+        }
+      }}
+    />
+  </label>
+  <span
+    id="theme-toggle-button"
+    className="icon material-symbols-rounded"
+    onClick={toggleTheme}
+  >
+    {isLightMode ? <MdDarkMode /> : <MdOutlineLightMode />}
+  </span>
+  <span
+    id="delete-chat-button"
+    className="icon material-symbols-rounded"
+    onClick={clearChats}
+  >
+    <RiDeleteBin5Line />
+  </span>
+</div>
         </form>
         <p className="disclaimer-text">
           Catalyst may display inaccurate info, so double-check its responses.

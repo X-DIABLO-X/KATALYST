@@ -342,3 +342,60 @@ body.hide-header .header {
     margin-top: 0.5rem;
   }
 }
+
+/* Profile Icon Container */
+.profile-icon-container {
+  position: fixed; /* Fixed position to keep it visible on scroll */
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+/* Profile Icon */
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #ccc;
+}
+
+/* Profile Popup */
+.profile-popup {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Logout Button */
+.profile-popup button {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  background-color: #f44336;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.profile-popup button:hover {
+  background-color: #d32f2f;
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
