@@ -83,7 +83,7 @@ const App = () => {
       // Call the Groq API
       const chatCompletion = await groq.chat.completions.create({
         messages: conversationHistory,
-        model: 'llama3-70b-8192llava-v1.5-7b-4096-preview', // Model used by Groq
+        model: 'llama-3.2-90b-vision-preview',
         temperature: 0.5,
         max_tokens: 2048,
         top_p: 1,
