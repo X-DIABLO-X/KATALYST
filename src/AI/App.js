@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Groq from 'groq-sdk';
-
+import dataset from './dataset.txt';
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { MdOutlineLightMode } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
@@ -18,6 +18,8 @@ const App = () => {
   const [chats, setChats] = useState([]);
   const [isLightMode, setIsLightMode] = useState(localStorage.getItem('themeColor') === 'light_mode');
   const [isResponseGenerating, setIsResponseGenerating] = useState(false);
+
+
 
   // Scroll to the latest message whenever chats are updated
   useEffect(() => {
@@ -44,7 +46,7 @@ const App = () => {
     setIsLightMode(!isLightMode);
     localStorage.setItem('themeColor', !isLightMode ? 'light_mode' : 'dark_mode');
   };
-
+  console.log(dataset);
   // Function to send a new message
   const sendMessage = async () => {
     if (!userMessage.trim() || isResponseGenerating) return;
@@ -54,14 +56,14 @@ const App = () => {
     setUserMessage('');
     setIsResponseGenerating(true);
   
-    const incomingChat = { role: 'bot', text: '', isLoading: true };
+    const incomingChat = { role: 'system', text: '', isLoading: true };
     setChats((prevChats) => [...prevChats, incomingChat]);
   
     // Transform the `chats` array into the valid `messages` format
     const conversationHistory = [
-      { role: 'system', content: 'you are a helpful assistant. Answer as Kat. Ask the user about their idea and transform it into something new using other users suggestions and also check statistical data and compare it with the data given by the user. Also check if it is possible to setup. Ask data like budget, location, capital, resource, etc., and analyze the data. Ask questions one by one and not in one go. Also not only ask questions, also give suggestions in between.' },
+      { role: 'system', content: dataset },
       ...chats.map(chat => ({
-        role: chat.role === 'bot' ? 'assistant' : 'user', // Map 'bot' to 'assistant'
+        role: chat.role === 'system' ? 'assistant' : 'user', // Map 'bot' to 'assistant'
         content: chat.text,
       })),
       { role: 'user', content: userMessage }, // Add the current user message
@@ -73,9 +75,9 @@ const App = () => {
         messages: conversationHistory,
         model: 'llama-3.2-90b-vision-preview', // Model used by Groq
         temperature: 1,
-        max_tokens: 1024,
+        max_tokens: 2048,
         top_p: 1,
-        stream: false,
+        // stream: false,
         stop: null,
       });
   
@@ -148,6 +150,7 @@ const App = () => {
           </div>
         ))}
       </div>
+      
       <div className="typing-area">
         <form
           className="typing-form"
@@ -169,7 +172,7 @@ const App = () => {
               type="submit"
               id="send-message-button"
               className="icon material-symbols-rounded"
-            >
+              >
               <IoSend />
             </button>
           </div>
