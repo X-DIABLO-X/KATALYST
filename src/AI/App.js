@@ -11,6 +11,8 @@ import { FaCode } from "react-icons/fa";
 import { FaCompass } from "react-icons/fa";
 import { ImAttachment } from "react-icons/im";
 import { Link } from 'react-router-dom';
+import { getUserInfo } from "../components/loginRegister/utils.js";
+const { name, profilePic } = getUserInfo();
 const groq = new Groq({ apiKey: "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", dangerouslyAllowBrowser: true });
 const Dataset = "you are a helpful assistant. Answer as Kat. Ask the user about their idea and transform it into something new using other users suggestions and also check statistical data and compare it with the data given by the user. Also check if it is possible to setup. Ask data like budget, location, capital, resource,etc. and analyze the data. Ask questions one by one and not in one go. Also not only ask questions also give suggestion in between. Also use INR for currency. Also ask user if they want any website or app for their business if yes then give them what latest technologies should be used and also all the frameworks which are required for that website. Also give them an organised roadmap for their business. Give these information little by little not at one time. Add emojies to the conversation to make it interactive.";
 
@@ -20,9 +22,15 @@ const App = () => {
   const [isLightMode, setIsLightMode] = useState(localStorage.getItem('themeColor') === 'light_mode');
   const [isResponseGenerating, setIsResponseGenerating] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [profilePic, setProfilePic] = useState('');
+  const [name, setName] = useState('');
 
-
-
+  // Load user info when the component mounts
+  useEffect(() => {
+    const { name, profilePic } = getUserInfo();
+    setName(name);
+    setProfilePic(profilePic);
+  }, []);
 
   // Scroll to the latest message whenever chats are updated
   useEffect(() => {
@@ -124,21 +132,22 @@ const App = () => {
   return (
     <div className="app">
       <header className="header">
-      <div className="profile-icon-container">
-  <img
-    className="profile-icon"
-    src={require('./images/user.jpg')} // Replace with your icon image path
-    alt="Profile Icon"
-    onClick={() => setIsProfileOpen(!isProfileOpen)}
-  />
-  {isProfileOpen && (
-    <div className="profile-popup">
-      <Link to="/"><button onClick={clearChats}>Logout</button></Link>
-    </div>
-  )}
-</div>
-
-        <h1 className="title">Hello, there</h1>
+        <div className="profile-icon-container">
+          {profilePic && (
+            <img
+              className="profile-icon"
+              src={profilePic}
+              alt="Profile Icon"
+              onClick={() => setIsProfileOpen(!isProfileOpen)}
+            />
+          )}
+          {isProfileOpen && (
+            <div className="profile-popup">
+              <Link to="/"><button onClick={clearChats}>Logout</button></Link>
+            </div>
+          )}
+        </div>
+        <h1 className="title">Hello, {name}</h1>
         <p className="subtitle">How can I help you today?</p>
         <ul className="suggestion-list">
           {[{ suggestion: 'Create an ecommerce website', icon: <FaCode /> },
@@ -169,7 +178,7 @@ const App = () => {
             <div className="message-content">
               <img
                 className="avatar"
-                src={chat.role === 'bot' ? require('./images/cat.jpg') : require('./images/user.jpg')}
+                src={chat.role === 'bot' ? require('./images/cat.jpg') : (profilePic)}
                 alt={`${chat.role} avatar`}
               />
               <p className="text">{chat.text}</p>
