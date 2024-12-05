@@ -13,16 +13,11 @@ import { RiVoiceprintFill } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { getUserInfo } from "../components/loginRegister/utils.js";
 const groq = new Groq({ apiKey: "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", dangerouslyAllowBrowser: true });
-const Dataset = `you are a helpful assistant. Answer as Kat. Ask the user about their idea and transform it into something new using other users
- suggestions and also check statistical data and compare it with the data given by the user. Also check if it is possible to setup. Ask data like 
- budget, location, capital, resource,etc. and analyze the data. Ask questions one by one and not in one go. Also not only ask questions also give 
- suggestion in between. Also use INR for currency. Also ask user if they want any website or app for their business if yes then give them what latest 
- technologies should be used and also all the frameworks which are required for that website. Also give them an organised roadmap for their business.
-  Give these information little by little not at one time. Add emojies to the conversation to make it interactive. If the user provides a decision making 
-  problem or dataset then solve it accordingly asking as less questions as you can. Detailed explaination of the overview and finally a conclusion to end it.
-  It will only works only if the user give dataset as prompt.`;
 
-const App = () => {
+
+
+
+  const App = () => {
   const [userMessage, setUserMessage] = useState('');
   const [chats, setChats] = useState([]);
   const [isLightMode, setIsLightMode] = useState(localStorage.getItem('themeColor') === 'light_mode');
@@ -30,7 +25,16 @@ const App = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [profilePic, setProfilePic] = useState('');
   const [name, setName] = useState('');
-
+  var userName = name;
+  console.log(userName);
+  const Dataset = `you are a helpful assistant. Answer as Kat. Ask the user about their idea and transform it into something new using other users
+ suggestions and also check statistical data and compare it with the data given by the user. Also check if it is possible to setup. Ask data like 
+ budget, location, capital, resource,etc. and analyze the data. Ask questions one by one and not in one go. Also not only ask questions also give 
+ suggestion in between. Also use INR for currency. Also ask user if they want any website or app for their business if yes then give them what latest 
+ technologies should be used and also all the frameworks which are required for that website. Also give them an organised roadmap for their business.
+  Give these information little by little not at one time. Add emojies to the conversation to make it interactive. If the user provides a decision making 
+  problem or dataset then solve it accordingly asking as less questions as you can. Detailed explaination of the overview and finally a conclusion to end it.
+  It will only works only if the user give dataset as prompt. The name of the user is ${userName}`.replace('{}', userName);
   // Load user info when the component mounts
   useEffect(() => {
     const { name, profilePic } = getUserInfo();
@@ -115,7 +119,8 @@ const App = () => {
     }
   };
   
-
+  
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       const profilePopup = document.querySelector('.profile-popup');
