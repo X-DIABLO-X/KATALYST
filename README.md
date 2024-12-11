@@ -2,7 +2,7 @@
 
 Catalyst is not just another AI tool; it’s your ultimate brainstorming partner. Whether you’re an entrepreneur, inventor, or a dreamer with a spark of inspiration, Catalyst transforms raw ideas into groundbreaking, actionable concepts tailored to your unique needs.
 
-## What Makes Catalyst Stand Out?
+##  What Makes Catalyst Stand Out?
 
 - **Hyper-Personalized Solutions**: Catalyst doesn’t just generate ideas; it tailors them to your inputs—budget, marketplace, goals—ensuring solutions that resonate with your vision.
 - **Collaborative Innovation**: Catalyst integrates diverse perspectives and user-contributed data to refine and evolve ideas, making them bigger, better, and more impactful.
