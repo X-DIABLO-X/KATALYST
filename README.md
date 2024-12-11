@@ -54,19 +54,11 @@ We’re always looking for contributors to help make Catalyst even better! Here�
 2. **Suggest Features**: Have an idea to improve Catalyst? Share it with us!
 3. **Contribute Code**: Fork the repository, make changes, and submit a pull request.
 
-## 📚 Documentation
-
-Detailed documentation is available in the `docs` folder of the repository. It includes:
-- API Reference
-- Architecture Overview
-- User Guides
 
 ## 🌐 Community & Support
 
 Join our community to connect with other users and contributors:
-- [Slack Channel](#)
-- [GitHub Discussions](#)
-- [Support Email](mailto:support@catalyst.ai)
+- [Support Email](mailto:catalyst24.forge@gmail.com)
 
 ## 💡 Inspiration Starts Here
 
