@@ -12,7 +12,7 @@ import { FaCompass } from "react-icons/fa";
 import { RiVoiceprintFill } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { getUserInfo } from "../components/loginRegister/utils.js";
-const groq = new Groq({ apiKey: "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", dangerouslyAllowBrowser: true });
+const groq = new Groq({ apiKey: "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", dangerouslyAllowBrowser: true });
 
 
 
