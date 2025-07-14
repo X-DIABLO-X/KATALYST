@@ -95,7 +95,7 @@ const groq = new Groq({ apiKey: "gsk_6FMIXSibAwmLybSrIJMiWGdyb3FYtDd58iqZMp4vsXV
       // Call the Groq API
       const chatCompletion = await groq.chat.completions.create({
         messages: conversationHistory,
-        model: 'llama-3.2-90b-vision-preview',
+        model: 'llama-3.3-70b-versatile',
         temperature: 1,
         max_tokens: 2048,
         top_p: 1,
